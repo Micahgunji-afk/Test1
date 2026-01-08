@@ -437,6 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &355973817
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1063,8 @@ MonoBehaviour:
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
 --- !u!1 &798420097
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,8 +1566,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 --- !u!1 &1295916897
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!114 &1056149658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1595,6 +1601,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveForce: 15
 --- !u!1 &1114199267
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
@@ -1603,6 +1612,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   - component: {fileID: 1295916902}
   - component: {fileID: 1295916901}
@@ -1616,11 +1626,17 @@ GameObject:
   m_Layer: 0
   m_Name: PlayerRoot
 >>>>>>> Stashed changes
+=======
+  - component: {fileID: 1114199268}
+  m_Layer: 0
+  m_Name: PlayerRoot
+>>>>>>> Stashed changes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
 --- !u!114 &1295916898
 =======
@@ -1721,11 +1737,15 @@ MeshFilter:
 =======
 --- !u!4 &1114199268
 >>>>>>> Stashed changes
+=======
+--- !u!4 &1114199268
+>>>>>>> Stashed changes
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
   m_GameObject: {fileID: 1295916897}
   serializedVersion: 2
@@ -1787,6 +1807,11 @@ Transform:
   m_GameObject: {fileID: 1114199267}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+=======
+  m_GameObject: {fileID: 1114199267}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+>>>>>>> Stashed changes
 =======
   m_GameObject: {fileID: 1114199267}
   serializedVersion: 2
@@ -1962,6 +1987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   moveForce: 18
   maxSpeed: 8
   fallDeathY: -5
@@ -2094,11 +2120,16 @@ Transform:
 =======
 =======
 >>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
   player: {fileID: 1056149656}
   moveSpeed: 6
   pushForce: 5
   stopDistance: 0
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
@@ -2261,11 +2292,15 @@ SceneRoots:
   - {fileID: 928083457}
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   - {fileID: 692873011}
   - {fileID: 850123930}
   - {fileID: 1550315409}
   - {fileID: 43448003}
   - {fileID: 1295916902}
+=======
+  - {fileID: 1114199268}
+>>>>>>> Stashed changes
 =======
   - {fileID: 1114199268}
 >>>>>>> Stashed changes
