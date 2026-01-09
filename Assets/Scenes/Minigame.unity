@@ -362,10 +362,8 @@ GameObject:
   - component: {fileID: 259538561}
   - component: {fileID: 259538565}
   - component: {fileID: 259538566}
-  - component: {fileID: 259538567}
-  - component: {fileID: 259538568}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameRules
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,36 +405,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 259538560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6362d42bcd1aa3d42a6d4a7568d36f71, type: 3}
+  m_Script: {fileID: 11500000, guid: f81acc7a95d70204093a287f42f24e93, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showMenu: 1
-  feedbackMessage: Welcome!
-  gameRunning: 0
---- !u!114 &259538567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259538560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21513b9126f96dc43bbb1551a2f93eeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &259538568
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259538560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21513b9126f96dc43bbb1551a2f93eeb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  playerTag: Player
+  enemyTag: Enemy
+  pulseSpeed: 3
+  pulseScale: 0.15
 --- !u!1 &355973817
 GameObject:
   m_ObjectHideFlags: 0
