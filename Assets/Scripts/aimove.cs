@@ -1,75 +1,90 @@
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class EnemyBumperAI : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
-    [Header("Movement")]
-    public float moveForce = 18f;
-    public float maxSpeed = 8f;
+    public float speed = 5f;  // Speed at which the enemy moves
+    public float turningSpeed = 5f;  // How quickly the enemy turns to face the player
+    public float stoppingForce = 10f;  // How quickly the enemy slows down when not moving towards the player
+    public float bumpForce = 15f;  // Force applied to the player when bumped
+    public string playerTag = "Player";  // Tag to identify the player object
+    public float detectionRange = 10f;  // Range within which the enemy starts following the player
 
-    [Header("Safety")]
-    public float fallDeathY = -5f;
+    private Rigidbody enemyRb;
+    private Transform player;
+    private bool isFollowing = false;
 
-    Rigidbody rb;
-    Transform player;
-
-    void Awake()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        enemyRb = GetComponent<Rigidbody>();
+        player = GameObject.FindGameObjectWithTag(playerTag)?.transform;
 
-        // Ensure correct Rigidbody settings
-        rb.useGravity = true;
-        rb.isKinematic = false;
-        rb.interpolation = RigidbodyInterpolation.Interpolate;
-        rb.collisionDetectionMode = CollisionDetectionMode.Continuous;
-    }
-
-    void FixedUpdate()
-    {
-        AcquirePlayer();
-        MoveTowardsPlayer();
-        LimitSpeed();
-        CheckFallDeath();
-    }
-
-    void AcquirePlayer()
-    {
-        if (player != null) return;
-
-        GameObject p = GameObject.FindGameObjectWithTag("Player");
-        if (p != null)
-            player = p.transform;
-    }
-
-    void MoveTowardsPlayer()
-    {
-        if (player == null) return;
-
-        Vector3 direction = player.position - transform.position;
-        direction.y = 0f;
-
-        if (direction.sqrMagnitude < 0.1f) return;
-
-        direction.Normalize();
-        rb.AddForce(direction * moveForce, ForceMode.Force);
-    }
-
-    void LimitSpeed()
-    {
-        Vector3 horizontalVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
-
-        if (horizontalVelocity.magnitude > maxSpeed)
+        if (player == null)
         {
-            Vector3 limited = horizontalVelocity.normalized * maxSpeed;
-            rb.linearVelocity = new Vector3(limited.x, rb.linearVelocity.y, limited.z);
+            Debug.LogError("Player not found! Make sure the player has the 'Player' tag.");
         }
     }
 
-    void CheckFallDeath()
+    private void Update()
     {
-        if (transform.position.y < fallDeathY)
+        if (player != null)
         {
-            Destroy(gameObject);
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            // If the player is within detection range, start following
+            if (distanceToPlayer <= detectionRange)
+            {
+                isFollowing = true;
+            }
+            else
+            {
+                isFollowing = false;
+            }
+
+            // If the enemy is following the player, move towards the player
+            if (isFollowing)
+            {
+                MoveTowardsPlayer();
+            }
+            else
+            {
+                StopMovement();
+            }
+        }
+    }
+
+    private void MoveTowardsPlayer()
+    {
+        // Calculate the direction from the enemy to the player
+        Vector3 directionToPlayer = (player.position - transform.position).normalized;
+
+        // Rotate the enemy towards the player gradually
+        Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turningSpeed * Time.deltaTime);
+
+        // Set the velocity of the enemy to move towards the player
+        enemyRb.linearVelocity = directionToPlayer * speed;
+    }
+
+    private void StopMovement()
+    {
+        // Apply stopping force to gradually stop the enemy when not following
+        enemyRb.linearVelocity = Vector3.Lerp(enemyRb.linearVelocity, Vector3.zero, stoppingForce * Time.deltaTime);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        // If the enemy collides with the player, apply bump force to the player
+        if (collision.gameObject.CompareTag(playerTag))
+        {
+            Rigidbody playerRb = collision.gameObject.GetComponent<Rigidbody>();
+            if (playerRb != null)
+            {
+                // Calculate the direction opposite to where the enemy is facing
+                Vector3 bumpDirection = (collision.transform.position - transform.position).normalized;
+
+                // Apply force to the player to bump them away from the enemy
+                playerRb.AddForce(bumpDirection * bumpForce, ForceMode.Impulse);
+            }
         }
     }
 }
